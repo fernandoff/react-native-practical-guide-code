@@ -1,13 +1,13 @@
-import { useLayoutEffect } from 'react';
-import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import { useLayoutEffect } from "react";
+import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
 
-import IconButton from '../components/IconButton';
-import List from '../components/MealDetail/List';
-import Subtitle from '../components/MealDetail/Subtitle';
-import MealDetails from '../components/MealDetails';
-import { MEALS } from '../data/dummy-data';
-import { addFavorite, removeFavorite } from '../store/redux/favorites';
+import IconButton from "../components/IconButton";
+import List from "../components/MealDetail/List";
+import Subtitle from "../components/MealDetail/Subtitle";
+import MealDetails from "../components/MealDetails";
+import { MEALS } from "../data/dummy-data";
+import { addFavorite, removeFavorite } from "../store/redux/favorites";
 // import { FavoritesContext } from '../store/context/favorites-context';
 
 function MealDetailScreen({ route, navigation }) {
@@ -20,7 +20,10 @@ function MealDetailScreen({ route, navigation }) {
 
   const mealIsFavorite = favoriteMealIds.includes(mealId);
 
+  console.log("mealIsFavorite", mealIsFavorite);
+
   function changeFavoriteStatusHandler() {
+    console.log("change favorite meal");
     if (mealIsFavorite) {
       // favoriteMealsCtx.removeFavorite(mealId);
       dispatch(removeFavorite({ id: mealId }));
@@ -35,7 +38,7 @@ function MealDetailScreen({ route, navigation }) {
       headerRight: () => {
         return (
           <IconButton
-            icon={mealIsFavorite ? 'star' : 'star-outline'}
+            icon={mealIsFavorite ? "star" : "star-outline"}
             color="white"
             onPress={changeFavoriteStatusHandler}
           />
@@ -73,23 +76,23 @@ const styles = StyleSheet.create({
     marginBottom: 32,
   },
   image: {
-    width: '100%',
+    width: "100%",
     height: 350,
   },
   title: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     fontSize: 24,
     margin: 8,
-    textAlign: 'center',
-    color: 'white',
+    textAlign: "center",
+    color: "white",
   },
   detailText: {
-    color: 'white',
+    color: "white",
   },
   listOuterContainer: {
-    alignItems: 'center',
+    alignItems: "center",
   },
   listContainer: {
-    width: '80%',
+    width: "80%",
   },
 });
